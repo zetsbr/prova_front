@@ -1,0 +1,61 @@
+<div class="tela_princ">
+    <div class="campos">
+        <mat-form-field appearance="fill">
+            <mat-label>id para operações</mat-label>
+            <input matInput [(ngModel)]="id">
+        </mat-form-field>
+    </div>
+    <div class="campos"> 
+        <button mat-raised-button color="primary"(click)="getId(id)">GetId</button>
+        <button mat-raised-button color="primary"(click)="post({nome_Produto: nome_Produto, valor: valor, data_Vencimento: data_Vencimento})">Post</button>
+        <button mat-raised-button color="primary"(click)="put(id, {nome_Produto: nome_Produto, valor: valor, data_Vencimento: data_Vencimento})">Put</button>
+        <button mat-raised-button color="primary"(click)="delete(id)">Delete</button> 
+    </div>
+    <div class="campos">  
+        <mat-form-field appearance="fill">
+            <mat-label>nome produto</mat-label>
+            <input matInput [(ngModel)]="nome_Produto">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>valor</mat-label>
+            <input matInput [(ngModel)]="valor">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>data vencimento</mat-label>
+            <input matInput [(ngModel)]="data_Vencimento">
+        </mat-form-field>
+    </div>
+    <div class=campos>
+        <button mat-raised-button color="primary"(click)="getAll()">GetAll</button>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="nome_produto">
+        <th mat-header-cell *matHeaderCellDef> nome_produto </th>
+        <td mat-cell *matCellDef="let element"> {{element.nome_Produto}} </td>
+        </ng-container>
+        <ng-container matColumnDef="valor">
+        <th mat-header-cell *matHeaderCellDef> valor </th>
+        <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+        </ng-container>
+        <ng-container matColumnDef="data_vencimento">
+        <th mat-header-cell *matHeaderCellDef> data_vencimento </th>
+        <td mat-cell *matCellDef="let element"> {{element.data_Vencimento}} </td>
+        </ng-container>
+        <ng-container matColumnDef="situacao">
+            <th mat-header-cell *matHeaderCellDef> condicao </th>
+            <td mat-cell *matCellDef="let element" [ngClass]=
+            "{
+                'va': element.condicao == 'válido',
+                'qv': element.condicao == 'quase vencendo',
+                've': element.condicao == 'vencido'
+            }"
+            > {{element.condicao}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>    
