@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Modal do Post/Put</h1>
+<div mat-dialog-content>
+  <p>insira os dados</p>
+  <mat-form-field appearance="fill">
+    <mat-label>nome_produto</mat-label>
+    <input matInput [(ngModel)]="data.nome_produto">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>valor</mat-label>
+    <input matInput [(ngModel)]="data.valor">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>data_vencimento</mat-label>
+    <input matInput [(ngModel)]="data.data_vencimento">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Registrar</button>
+</div>

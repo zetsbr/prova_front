@@ -1,0 +1,36 @@
+<div class="tela_princ">
+    <mat-form-field appearance="fill">
+        <mat-label>id para operações</mat-label>
+        <input matInput [(ngModel)]="id_b">
+    </mat-form-field>
+    <div></div>
+    <button mat-raised-button color="primary"(click)="postPut(true)">Post</button>
+    <button mat-raised-button color="primary"(click)="getAll()">GetAll</button>
+    <button mat-raised-button color="primary"(click)="getId(id_b)">GetId</button>
+    <button mat-raised-button color="primary"(click)="postPut(false)">Put</button>
+    <button mat-raised-button color="primary"(click)="delete(id_b)">Delete</button> 
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="nome_produto">
+        <th mat-header-cell *matHeaderCellDef> nome_produto </th>
+        <td mat-cell *matCellDef="let element"> {{element.nome_produto}} </td>
+        </ng-container>
+        <ng-container matColumnDef="valor">
+        <th mat-header-cell *matHeaderCellDef> valor </th>
+        <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+        </ng-container>
+        <ng-container matColumnDef="data_vencimento">
+        <th mat-header-cell *matHeaderCellDef> data_vencimento </th>
+        <td mat-cell *matCellDef="let element"> {{element.data_vencimento}} </td>
+        </ng-container>
+        <ng-container matColumnDef="situacao">
+            <th mat-header-cell *matHeaderCellDef> situacao </th>
+            <td mat-cell *matCellDef="let element"> {{element.situacao}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>    
