@@ -1,11 +1,13 @@
 #   CRUD Pedido Front-end
 - **autor**: João Vitor Porto (jvaporto@gmail.com)
 
-Aplicação web montada através das ferramentas Node, Angular e Angular Material
+Aplicação web montada através das ferramentas Node, Angular e Angular Material para realização de um crud básico de pedidos
 
 ## Dependências:
 
-Para execução deste projeto é necessário a presença das três ferramentas anteriormente citadas aptas a serem utilizadas pelo projeto
+- (Node)[https://nodejs.org/en/]
+- (Angular)[https://angular.io/]
+- (Angular Material)[https://material.angular.io/]
 
 ## Setup:
 

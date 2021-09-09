@@ -4,11 +4,17 @@
             <mat-label>id para operações</mat-label>
             <input matInput [(ngModel)]="id">
         </mat-form-field>
+        <div *ngIf="condicao">
+            <mat-form-field appearance="fill">
+                <mat-label>Desconto (0 - 99%)</mat-label>
+                <input matInput [(ngModel)]="desconto" type="number" min=0 max=99>
+            </mat-form-field>
+        </div>
     </div>
     <div class="campos"> 
         <button mat-raised-button color="primary"(click)="getId(id)">GetId</button>
         <button mat-raised-button color="primary"(click)="post({nome_Produto: nome_Produto, valor: valor, data_Vencimento: data_Vencimento})">Post</button>
-        <button mat-raised-button color="primary"(click)="put(id, {nome_Produto: nome_Produto, valor: valor, data_Vencimento: data_Vencimento})">Put</button>
+        <button mat-raised-button color="primary"(click)="put(id, {nome_Produto: nome_Produto, valor: condicao === 'vencido' ? valor : (valor - (valor * desconto / 100)), data_Vencimento: data_Vencimento})">Put</button>
         <button mat-raised-button color="primary"(click)="delete(id)">Delete</button> 
     </div>
     <div class="campos">  
@@ -18,7 +24,7 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>valor</mat-label>
-            <input matInput [(ngModel)]="valor">
+            <input matInput [(ngModel)]="valor" type="number">
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>data vencimento</mat-label>

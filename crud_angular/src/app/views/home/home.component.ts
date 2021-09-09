@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit
   nome_Produto !: string;
   valor!: number;
   data_Vencimento!: Date;
+  condicao: string | undefined;
+  desconto: number = 0;
 
   constructor(public api_connService: api_connService) {  }
   
@@ -31,8 +33,10 @@ export class HomeComponent implements OnInit
       this.aux = data;
     })
     this.nome_Produto = this.aux.nome_Produto;
-    this.valor = this.aux.valor;
+    this.valor = this.aux.valor
     this.data_Vencimento = this.aux.data_Vencimento;
+    this.condicao = this.aux.condicao;
+    this.desconto = 0
   }
 
   post(body: PElement): void 
@@ -46,10 +50,12 @@ export class HomeComponent implements OnInit
 
   put(id: number, body: PElement): void
   {
+    console.log(body.valor)
     this.api_connService.putHttp(id, body)
     .subscribe(result => 
     {
       console.log("put");
+      this.condicao = undefined;
     })
   }
 
